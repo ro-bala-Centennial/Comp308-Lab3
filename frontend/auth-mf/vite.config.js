@@ -11,7 +11,7 @@ export default defineConfig({
       exposes: {
         "./AuthApp": "./src/App.jsx",
       },
-      shared: ["react", "react-dom", "@apollo/client", "graphql"],
+      shared: ["react", "react-dom"],
     }),
   ],
   server: {
