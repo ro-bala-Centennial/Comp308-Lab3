@@ -10,12 +10,10 @@ const { getUserFromToken } = require("./middleware/auth");
 const startServer = async () => {
   const app = express();
 
-  app.use(
-    cors({
-      origin: true,
-      credentials: true,
-    })
-  );
+  app.use(cors({
+    origin: true,
+    credentials: true,
+  }));
   app.use(express.json());
 
   await connectDB();
