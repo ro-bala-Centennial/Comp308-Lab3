@@ -9,13 +9,19 @@ export default defineConfig({
       name: "auth_mf",
       filename: "remoteEntry.js",
       exposes: {
-        "./AuthApp": "./src/App.jsx",
+        "./AuthApp": "./src/bootstrap.jsx",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true, eager: true },
+        "react-dom": { singleton: true, eager: true },
+      },
+
+
     }),
   ],
   server: {
     port: 5174,
+    strictPort: true,
   },
   build: {
     target: "esnext",

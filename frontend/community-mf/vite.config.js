@@ -11,11 +11,16 @@ export default defineConfig({
       exposes: {
         "./CommunityApp": "./src/App.jsx",
       },
-      shared: ["react", "react-dom", "@apollo/client", "graphql"],
+      shared: {
+        react: { singleton: true, eager: true },
+        "react-dom": { singleton: true, eager: true },
+      },
+
     }),
   ],
   server: {
     port: 5175,
+    strictPort: true,
   },
   build: {
     target: "esnext",

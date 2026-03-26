@@ -8,14 +8,15 @@ export default defineConfig({
     federation({
       name: "shell",
       remotes: {
-        auth_mf: "http://localhost:5174/remoteEntry.js",
-        community_mf: "http://localhost:5175/remoteEntry.js",
+        auth_mf: "http://localhost:5174/assets/remoteEntry.js",
+        community_mf: "http://localhost:5175/assets/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom"]
     }),
   ],
   server: {
     port: 5173,
+    strictPort: true,
   },
   build: {
     target: "esnext",

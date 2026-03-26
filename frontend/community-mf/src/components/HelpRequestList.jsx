@@ -1,5 +1,6 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
-
+import { gql } from "@apollo/client";
+import { useMutation } from "@apollo/client/react";
+import { useQuery } from "@apollo/client/react";
 const GET_HELP_REQUESTS = gql`
   query {
     getHelpRequests {

@@ -1,5 +1,12 @@
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";  // ← moved here in v4
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+
+const client = new ApolloClient({
+  uri: "http://localhost:4001/graphql",
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
   const logout = () => {
@@ -8,13 +15,15 @@ export default function App() {
   };
 
   return (
-    <div>
-      <h1>Authentication</h1>
-      <Login />
-      <hr />
-      <Signup />
-      <hr />
-      <button onClick={logout}>Logout</button>
-    </div>
+    <ApolloProvider client={client}>
+      <div>
+        <h1>Authentication</h1>
+        <Login />
+        <hr />
+        <Signup />
+        <hr />
+        <button onClick={logout}>Logout</button>
+      </div>
+    </ApolloProvider>
   );
 }

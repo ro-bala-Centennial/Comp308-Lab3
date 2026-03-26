@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useMutation } from "@apollo/client/react";
+import { useQuery } from "@apollo/client/react";
 
 const CREATE_HELP_REQUEST = gql`
   mutation CreateHelpRequest($description: String!, $location: String) {
