@@ -9,7 +9,7 @@ export default defineConfig({
       name: "community_mf",
       filename: "remoteEntry.js",
       exposes: {
-        "./CommunityApp": "./src/App.jsx",
+        "./CommunityApp": "./src/bootstrap.jsx",
       },
       shared: {
         react: { singleton: true, eager: true },
