@@ -11,7 +11,10 @@ export default defineConfig({
         auth_mf: "http://localhost:5174/assets/remoteEntry.js",
         community_mf: "http://localhost:5175/assets/remoteEntry.js",
       },
-      shared: ["react", "react-dom"]
+      shared: {
+        react: { singleton: true, eager: true },
+        "react-dom": { singleton: true, eager: true },
+      },
     }),
   ],
   server: {

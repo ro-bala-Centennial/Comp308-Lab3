@@ -1,10 +1,12 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { ApolloProvider } from "@apollo/client/react";  // ← moved here in v4
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4001/graphql",
+  link: new HttpLink({
+    uri: "http://localhost:4001/graphql",
+  }),
   cache: new InMemoryCache(),
 });
 

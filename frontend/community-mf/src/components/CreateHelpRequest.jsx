@@ -20,8 +20,9 @@ export default function CreateHelpRequest() {
     location: "",
   });
 
-  const [createHelpRequest, { loading, error }] = useMutation(CREATE_HELP_REQUEST);
-
+  const [createHelpRequest, { loading, error }] = useMutation(CREATE_HELP_REQUEST, {
+    refetchQueries: ["getHelpRequests"],
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createHelpRequest({ variables: form });

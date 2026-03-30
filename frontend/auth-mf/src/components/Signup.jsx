@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { gql } from "@apollo/client";
-import { useMutation } from "@apollo/client/react";
+import { useMutation, useQuery } from "@apollo/client/react";
 
 const SIGNUP = gql`
   mutation Signup($username: String!, $email: String!, $password: String!, $role: String!) {
@@ -34,6 +34,7 @@ export default function Signup() {
     if (token) {
       localStorage.setItem("token", token);
       alert("Signup successful");
+      setForm({ username: "", email: "", password: "", role: "resident" });
     }
   };
 

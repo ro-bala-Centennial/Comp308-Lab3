@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client/react";
 import { useQuery } from "@apollo/client/react";
+
 const GET_HELP_REQUESTS = gql`
   query {
     getHelpRequests {
@@ -23,12 +24,13 @@ const VOLUNTEER = gql`
 `;
 
 export default function HelpRequestList() {
-  const { data, loading, error, refetch } = useQuery(GET_HELP_REQUESTS);
-  const [volunteerForHelpRequest] = useMutation(VOLUNTEER);
+  const { data, loading, error } = useQuery(GET_HELP_REQUESTS);
+  const [volunteerForHelpRequest] = useMutation(VOLUNTEER, {
+    refetchQueries: ["getHelpRequests"],
+  });
 
   const handleVolunteer = async (id) => {
     await volunteerForHelpRequest({ variables: { id } });
-    refetch();
   };
 
   if (loading) return <p>Loading help requests...</p>;

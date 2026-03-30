@@ -21,7 +21,9 @@ export default function CreatePost() {
     aiSummary: "",
   });
 
-  const [createPost, { loading, error }] = useMutation(CREATE_POST);
+  const [createPost, { loading, error }] = useMutation(CREATE_POST, {
+    refetchQueries: ["getPosts"],
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
